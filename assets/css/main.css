@@ -1,0 +1,361 @@
+body{
+  background-color: black;
+  color:hsla(0, 100%, 100%, .88);
+/*  color: #044A0B;*/
+  background-image: url(../images/dj.jpg);
+    background-size: 100% 100%;
+
+}
+
+
+
+.no-visit-change:visited {
+  background-color:#222;
+  
+} 
+
+.btn{
+  background-color: #222;
+  color: inherit;
+  border-color: hsla(0, 100%, 100%, .88);
+}
+
+.btn:hover{
+  background-color: #080808;
+  border-color: red;
+}
+
+.btn:active:focus{
+  background-color: white;
+  color: black;
+}
+
+.btn-lg:focus{
+  background-color: #222;
+}
+
+.btn-primary:active:focus{
+  background-color: white;
+  color: black;
+}
+
+.btn-md:active:focus{
+  background-color: white;
+  color: black;
+}
+
+.modal-inline-text{
+  color: black;
+}
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 24px;
+  margin-bottom: -4px;
+  margin-top: -2px;
+  padding-bottom: 0px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 24px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.chat-room-main {
+  max-width: 700px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+}
+
+.chat-room-secondary {
+  max-width: 300px;
+     background-color: rgba(0, 0, 0, 0.5);
+  max-height: 300px;
+  padding: 0;
+} 
+
+.chat-image-main {
+
+  max-width: 225px;
+}
+
+.chat-description {
+  font-size: 1.5em;
+  list-style: none;
+}
+
+.headline {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button {
+  position: relative;
+  bottom: 125px;
+  width: 50px;
+}
+
+.chat-image-secondary {
+  
+  max-width: 150px;
+  
+}
+
+.button-second {
+  
+  width: 30px;
+  
+  position: relative;
+  bottom: 75px;
+}
+
+
+
+
+/****************
+YOUTUBE STYLE
+****************/
+.create-chat {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+/****************
+YOUTUBE STYLE
+****************/
+.youtube-holder {
+  
+  padding: 15px
+}
+/****************
+CHAT-ROOM STYLE
+****************/
+
+.chat-mod {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  padding: 20px;
+  height: 310px;
+  vertical-align: middle;
+}
+
+.chatbox {
+  min-width: 300px;
+  height: 315px;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 3px #ccc;
+  
+}
+
+.chatlogs {
+  padding: 10px;
+  width: 100%;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.chatlogs::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chatlogs::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0,0,0,.1); 
+}
+
+.chat {
+  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  
+}
+
+.chat .user-photo {
+  width: 60px; 
+  height: 60px;
+  background: #ccc;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.chat .user-photo img {
+  width: 100%;
+  }
+
+.chat .chat-message {
+  font-size: 1em;
+  width: 75%;
+  padding: 15px;
+  margin: 5px 10px 0;
+  border-radius: 10px;
+  color: #fff;
+  
+}
+
+.friend .chat-message { 
+  background: #1adda4; 
+}
+
+.self .chat-message {
+  background: #1ddced; 
+  order: -1;
+  
+}
+
+.chat-form {
+  margin-top: 20px;  
+  display: flex;
+  align-items: flex-start;
+}
+
+.chat-form textarea {
+  background: #fbfbfb;
+  width: 75%;
+  height: 50px;
+  border: 2px solid #eee;
+  border-radius: 3px;
+  resize: none;
+  padding: 10px;
+  font-size: 10px;
+  color: #999;
+}
+
+.chat-form textarea:focus {
+  background: #fff;
+}
+
+.chat-form textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.chat-form textarea::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0,0,0,.1); 
+}
+
+.chat-form button {
+  background: #1ddced;
+  padding: 5px 15px; 
+  font-size: 2em;
+  color: #fff;
+  border: none;
+  margin: 0 10px;
+  border-radius: 3px;
+  box-shadow: 0 3px 0 #0eb2c1;  
+  cursor: pointer;
+  
+  -webkit-transition: background .2% ease;
+  -moz-transition: background .2% ease;
+  -o-transition: background .2% ease;
+}
+
+.chat-form button:hover {
+  background: #13c8d9;
+  
+}
+
+/****************
+LYRIC STYLE
+****************/
+
+.lyrics-section {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.lyrics {
+  min-width: 300px;
+  height: 315px;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 3px #ccc;
+   overflow-x: hidden;
+  overflow-y: scroll;
+  color: #000000;
+  font-size: 14px;
+}
+
+/****************
+LYRIC STYLE
+****************/
+
+
+.stubhub-section {
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+/****************
+ABOUT STYLE
+****************/
+
+.is-dark {
+  
+  opacity: 0.8;
+}
+
+section {
+  
+  margin-bottom: 20px;
+}
+
+#about {
+  
+}

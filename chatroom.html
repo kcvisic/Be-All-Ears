@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>All Ears Draft</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- custom css -->
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css"> 
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/altcss.css"> -->
+
+	<!-- Firebase database modules -->
+	<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+</head>
+<body>
+	<!-- main nav -->
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="index.html">All Ears</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="index.html">Home</a></li>
+	        <li><a href="about.html">About</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li id="signUpContainer"></li>
+	        <li id="loginContainer"></li>
+	        <li id="signOutContainer"></li>
+	        <li>
+	        	<!-- Rounded switch -->
+	        	<a href="#">
+	        		<span>
+						<label class="switch">
+						  <input type="checkbox" id="darkModeSlider">
+						  <span class="slider round"></span>
+						</label>
+					</span>
+				</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+<!-- main nav -->
+
+<!-- User sign up modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title modal-inline-text">Sign Up</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label class="modal-inline-text" for="usr">Email</label>  
+                    <input type="text" class="form-control" id="emailInput">                     
+                    <label class="modal-inline-text" for="usr">Username</label> 
+                    <input type="text" class="form-control" id="usernameInput"> 
+                    <label class="modal-inline-text" for="usr">Password</label> 
+                    <input type="password" class="form-control" id="passwordInput">
+                    <label class="modal-inline-text" for="usr">Confirm Password</label> 
+                    <input type="password" class="form-control" id="passwordConfirmInput">             
+                  </div>
+                  <div id="errorMessageContainerSignUp">
+              
+                  </div> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="signUpButton">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- User sign up modal -->
+
+<!-- Login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title modal-inline-text">Login</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">                    
+                    <label class="modal-inline-text" for="usr">Username</label> 
+                    <input type="text" class="form-control" id="usernameLoginInput">  
+                    <label class="modal-inline-text" for="usr">Password</label> 
+                    <input type="password" class="form-control" id="passwordLoginInput">            
+                  </div>
+                  <div id="errorMessageContainerLogin">
+                
+                  </div> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="loginButton">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Login modal -->
+
+  <div class="row">
+    <div class="container">
+      <div class="col-sm-12 col-md-12 col-lg-6 text-center">
+        <div class="youtube-holder">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/O3QOBYq0lBI" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-6 text-center">
+         <div class="jumbotron chat-mod text-center" id="performerImg" style="margin-top: 20px;">
+           
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="container">
+      <div class="col-sm-12 col-md-12 col-lg-6">
+        <div class="jumbotron lyrics-section">
+        <div class="lyrics">
+          
+        </div>
+          </div>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-6 text-center">
+        <div class="jumbotron stubhub-section">
+          <div id="artist-image">
+          </div>
+          <div>
+            <a target="_blank" class="findTickets" id="findTicketsButton"><button class="btn btn-primary btn-lg" type="submit">Find Ticket Prices</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/javascript/main.js"></script>
+</body>
+<script type="text/javascript" src="assets/javascript/chatroom.js"></script>
+<script type="text/javascript" src="assets/javascript/index.js"></script>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>All Ears Draft</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<!-- custom css -->
+	<link rel="stylesheet" type="text/css" href="assets/css/main.css"> 
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/altcss.css"> -->
+
+	<!-- Firebase database modules -->
+	<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+</head>
+<body>
+<!-- main nav -->
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="index.html">All Ears</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li><a href="index.html">Home</a></li>
+	        <li><a href="about.html">About</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li id="signUpContainer"></li>
+	        <li id="loginContainer"></li>
+          <li id="signOutContainer"></li>
+	        <li>
+	        	<!-- Rounded switch -->
+	        	<a href="#">
+	        		<span>
+						<label class="switch">
+						  <input type="checkbox" id="darkModeSlider">
+						  <span class="slider round"></span>
+						</label>
+					</span>
+				</a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+<!-- main nav -->
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+   
+      <div class="container jumbotron create-chat">
+        <h1 class="display-3">All Ears</h1>
+        <p>All Ears is an interactive website designed for music lovers. 
+            Visitors to our website have an opportunity to experience acoustic chat rooms which are specifically designed to encourage fruitful discussions content sharing.</p>
+        <p>
+         <button type="button" class="btn btn-primary btn-lg buttonShowModal" data-toggle="modal" data-target="#myModal">New Groove Room</button> 
+        </p>
+      </div>
+
+  
+<!-- Create Groove Room Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title modal-inline-text" id="purchaseLabel">Groove Room</h4>
+                </div>
+                <div class="modal-body" id="myModalBody">
+                  <div class="form-group">                    
+                    <p class="modal-inline-text">Prepare to enter a Groove Room, others will soon follow and your world of discovering crunchy new grooves will begin.</p>
+                    <label class="modal-inline-text" for="usr">Enter Song</label> 
+                    <input type="search" class="form-control ui-autocomplete-input" name="initialSong" id="initialSong">
+                    <label class="modal-inline-text" for="usr">Enter Artist</label> 
+                    <input type="search" class="form-control ui-autocomplete-input" name="initialArtist" id="initialArtist">      
+                    <label class="modal-inline-text" for="usr">Groove Room Name</label> 
+                    <input type="text" class="form-control" id="grooveRoomInput">  
+                  </div>
+                </div>
+                <div id="errorMessageContainer">
+              
+                </div> 
+                <div class="modal-footer" id="myModalFooter">
+                    <button type="button" class="btn btn-default modal-closer" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="createGrooveRoom" data-dismiss="modal">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Create Groove Room Modal -->
+
+<!-- User sign up modal -->
+    <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title modal-inline-text">Sign Up</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label class="modal-inline-text" for="usr">Email</label>  
+                    <input type="text" class="form-control" id="emailInput">                     
+                    <label class="modal-inline-text" for="usr">Username</label> 
+                    <input type="text" class="form-control" id="usernameInput"> 
+                    <label class="modal-inline-text" for="usr">Password</label> 
+                    <input type="password" class="form-control" id="passwordInput">
+                    <label class="modal-inline-text" for="usr">Confirm Password</label> 
+                    <input type="password" class="form-control" id="passwordConfirmInput">             
+                  </div>
+                  <div id="errorMessageContainerSignUp">
+              
+                  </div> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="signUpButton">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- User sign up modal -->
+
+<!-- Login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title modal-inline-text">Login</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">                    
+                    <label class="modal-inline-text" for="usr">Username</label> 
+                    <input type="text" class="form-control" id="usernameLoginInput">  
+                    <label class="modal-inline-text" for="usr">Password</label> 
+                    <input type="password" class="form-control" id="passwordLoginInput">            
+                  </div>
+                  <div id="errorMessageContainerLogin">
+                
+                  </div> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="loginButton">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Login modal -->
+
+
+
+<div class="row">
+    <div class="container">
+      <div class="col-sm-12 col-md-12 col-lg-8" id="mainVideoChatrooms">
+  <div class="row">
+      <div class="">
+        <div class="container jumbotron chat-room-main">
+            <h2 class="text-center">Nik's Room Playing</h2>
+          <div class="text-center col-sm-12 col-md-12 col-lg-6">
+            <p>
+              Artist: Daniel Caesar<br>
+              Song Name: Got You
+            </p>
+          </div>
+          <div class="text-center col-sm-12 col-md-12 col-lg-6">
+            <img class="chat-image-main" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+            <img class="button" src="assets/images/play_button_sm.png" />
+          </div>
+      </div> 
+      </div>
+  </div>
+  </div>    
+      <div class="col-sm-12 col-md-12 col-lg-4">
+  <div class="row" id="rightSideContainer">
+    <div class="row">
+     <div>
+        <div class="container jumbotron chat-room-secondary">
+            <h2 class="text-center">Pat's Room Playing</h2>
+          <div class="text-center">
+            <img class="chat-image-secondary" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+            <img class="button-second" src="assets/images/play_button_sm.png" />
+          </div>
+      </div> 
+      </div> 
+    </div>
+    <div class="row">
+    <div>
+        <div class="container jumbotron chat-room-secondary">
+            <h2 class="text-center">Nik's Room Playing</h2>
+          <div class="text-center">
+            <img class="chat-image-secondary" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+            <img class="button-second" src="assets/images/play_button_sm.png" />
+          </div> 
+      </div> 
+      </div>
+    </div>
+    <div class="row">
+    <div>
+        <div class="container jumbotron chat-room-secondary">
+            <h2 class="text-center">Tabatha's Room Playing</h2>
+          <div class="text-center">
+            <img class="chat-image-secondary" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+            <img class="button-second" src="assets/images/play_button_sm.png" />
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+        </div>
+    </div>
+    </div>
+
+
+  <!-- <div class="row">
+    <div class="container">
+      <div class="col-sm-12 col-md-12 col-lg-8">
+      	<div class="row">
+            <div class="">
+              <div class="container jumbotron chat-room-main">
+                	<h2 class="text-center">Larry's Room Playing</h2>
+                <div class="text-center col-sm-12 col-md-12 col-lg-6">
+                  <p>
+                    Artist: SZA<br>
+                    Song Name: Love Galore<br>
+                     Genre: R&amp;B<br>
+                    Members in Chat Room: 50<br>
+                  </p>
+                </div>
+                <div class="text-center col-sm-12 col-md-12 col-lg-6">
+                  <img id="artist-image" class="chat-image-main" /><br />
+                  <img class="button" />
+                </div>
+              </div> 
+            </div>
+        </div>
+      <div class="row">
+          <div class="">
+            <div class="container jumbotron chat-room-main">
+              	<h2 class="text-center">Nik's Room Playing</h2>
+              <div class="text-center col-sm-12 col-md-12 col-lg-6">
+                <p>
+                  Artist: Daniel Caesar<br>
+                  Song Name: Got You<br>
+                  Genre: R&amp;B<br>
+                  Members in Chat Room: 25<br>
+                </p>
+              </div>
+              <div class="text-center col-sm-12 col-md-12 col-lg-6">
+                <img class="chat-image-main" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+                <img class="button" src="assets/images/play_button_sm.png" />
+              </div>
+            </div> 
+          </div>
+      </div>
+    </div>    
+        <div class="col-sm-12 col-md-12 col-lg-4">
+          <div class="row">
+            <div class="">
+             <div>
+                <div class="container jumbotron chat-room-secondary">
+                  	<h2 class="text-center">Pat's Room Playing</h2>
+                  <div class="text-center">
+                    <img class="chat-image-secondary" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+                    <img class="button-second" src="assets/images/play_button_sm.png" />
+                  </div>
+              </div> 
+              </div> 
+            </div>
+            <div class="row">
+            <div>
+                <div class="container jumbotron chat-room-secondary">
+                  	<h2 class="text-center">Nik's Room Playing</h2>
+                  <div class="text-center">
+                    <img class="chat-image-secondary" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+                    <img class="button-second" src="assets/images/play_button_sm.png" />
+                  </div> 
+              </div> 
+              </div>
+            </div>
+            <div class="row">
+            <div>
+                <div class="container jumbotron chat-room-secondary">
+                  	<h2 class="text-center">Tabatha's Room Playing</h2>
+                  <div class="text-center">
+                    <img class="chat-image-secondary" src="assets/images/freudian_daniel%20caesar.jpg" /><br />
+                    <img class="button-second" src="assets/images/play_button_sm.png" />
+                  </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+</body>
+
+  <script type="text/javascript" src="assets/javascript/main.js"></script>
+  <script type="text/javascript" src="assets/javascript/index.js"></script>
+
+</html>
