@@ -4,11 +4,15 @@
 //https://www.googleapis.com/youtube/v3/search?part=snippet&q=jordan&maxResults=1&key=AIzaSyASwdpu78n7US8xShgVezu2FsSlYuvwwaE
 //https://www.googleapis.com/youtube/v3/search?part=snippet&q=jordan&type=video&maxResults=1&key=AIzaSyASwdpu78n7US8xShgVezu2FsSlYuvwwaE
 // Initialize Firebase
+var config = {
 
-
-  // Initialize Firebase
-
-
+    apiKey: "AIzaSyDnUYX89SNNniE0cCId3IElxbHBbnpwT88",
+    authDomain: "project1-adf39.firebaseapp.com",
+    databaseURL: "https://project1-adf39.firebaseio.com",
+    projectId: "project1-adf39",
+    storageBucket: "project1-adf39.appspot.com",
+    messagingSenderId: "513201522018"
+};
 
 firebase.initializeApp(config);
 var songName = "";
@@ -206,7 +210,7 @@ database.ref().once("value", function(childSnapshot) {
 	// 	console.log(childSnapshot.child(key));
 	// }
 	childSnapshot.forEach(function(childFields){
-		var chatRoomURL = "file:///Users//Documents/repos/Be-All-Ears/index.html/chatroom.html?roomBase=" + childFields.val().userUID + "&roomName=" + childFields.val().grooveRoomName + "&youtubeID=" + childFields.val().youtubeID + "&ticketLink=" + childFields.val().performerTicketLink + "&performerImg=" + childFields.val().ticketImage;
+		var chatRoomURL = "file:///Users/avadmin/Desktop/Class/project1/GoobersRepo/project1_allears/chatroom.html?roomBase=" + childFields.val().userUID + "&roomName=" + childFields.val().grooveRoomName + "&youtubeID=" + childFields.val().youtubeID + "&ticketLink=" + childFields.val().performerTicketLink + "&performerImg=" + childFields.val().ticketImage;
 		  // full list of items to the well
 		  $("#mainVideoChatrooms").append('<div class="row">\
 										      <div class="">\
@@ -264,7 +268,7 @@ $("#createGrooveRoom").on("click", function() {
 					var youtubeAPIData = $.ajax({
 												 contentType: 'application/json',
 												 method: "GET",
-												 url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + songName + '&type=video&videoEmbeddable=true&maxResults=1&key='	 
+												 url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=' + songName + '&type=video&videoEmbeddable=true&maxResults=1&key=AIzaSyASwdpu78n7US8xShgVezu2FsSlYuvwwaE'	 
 												});			
 
 					//seatgeek api call
@@ -321,7 +325,7 @@ $("#createGrooveRoom").on("click", function() {
 							        dateAdded: firebase.database.ServerValue.TIMESTAMP
 							      });
 								console.log(data3[0]);
-								window.location = "file:///Users/Documents/repos/Be-All-Ears/index.html/chatroom.html?roomBase=" + userVar["uid"] + "&roomName=" + grooveRoomName + "&youtubeID=" + youtudeNeededData["items"][0]["id"]["videoId"] + "&ticketLink=#&performerImg=assets/images/Music-Background-20.jpg";
+								window.location = "file:///Users/avadmin/Desktop/Class/project1/GoobersRepo/project1_allears/chatroom.html?roomBase=" + userVar["uid"] + "&roomName=" + grooveRoomName + "&youtubeID=" + youtudeNeededData["items"][0]["id"]["videoId"] + "&ticketLink=#&performerImg=assets/images/Music-Background-20.jpg";
 							}
 						} else {
 							var performerTicketLink = data3[0].performers[0].url;
@@ -349,7 +353,7 @@ $("#createGrooveRoom").on("click", function() {
 							        dateAdded: firebase.database.ServerValue.TIMESTAMP
 							      });
 								// console.log(data2);
-								window.location = "file:///Users//Documents/repos/Be-All-Ears/index.html/chatroom.html?roomBase=" + userVar["uid"] + "&roomName=" + grooveRoomName + "&youtubeID=" + youtudeNeededData["items"][0]["id"]["videoId"] + "&ticketLink=" + performerTicketLink + "&performerImg=" + performerImage;
+								window.location = "file:///Users/avadmin/Desktop/Class/project1/GoobersRepo/project1_allears/chatroom.html?roomBase=" + userVar["uid"] + "&roomName=" + grooveRoomName + "&youtubeID=" + youtudeNeededData["items"][0]["id"]["videoId"] + "&ticketLink=" + performerTicketLink + "&performerImg=" + performerImage;
 							}
 						}
 
